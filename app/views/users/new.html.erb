@@ -1,5 +1,8 @@
 <h1>Sign Up!</h1>
 
-<%= render "shared/form", url: users_url %>
+<% email_text_box = "
+  <label>Email <input name=\"user[email]\" type=\"text\" name=\"user[username]\"></label><br>
+  " %>
+<%= render "shared/form", url: users_url, extra_stuff: email_text_box %>
 
 <%= link_to("Sign in", new_session_url) %>

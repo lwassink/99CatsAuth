@@ -8,7 +8,13 @@ class UsersController < ApplicationController
 
     if user.valid?
       user.save
-      redirect_to user_url(user)
+
+      if user.email
+        msg = UserMailer.welcome_email(user)
+        msg.deliver
+      end
+
+      login_user!(user)
     else
       flash.now[:errors] = user.errors.full_messages
       render :new
@@ -23,6 +29,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :email)
   end
 end

@@ -1,0 +1,11 @@
+<table>
+  <tr>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Requester</th>
+    <th>Status</th>
+  </tr>
+  <% cat.rental_requests.includes(:user).order("start_date").each do |req| %>
+    <%= render "cats/req_tr", req: req, cat: cat %>
+  <% end %>
+</table>

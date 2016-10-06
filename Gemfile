@@ -17,4 +17,5 @@ group :development do
   gem 'pry-rails'
   gem 'annotate'
   gem 'bcrypt'
+  gem "letter_opener"
 end

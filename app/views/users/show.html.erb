@@ -1,6 +1,13 @@
 <h1>Hi there!</h1>
 
-<p>
-  You are <%= @user.username %>
-</p>
-<br>
+<% if current_user && current_user.cats %>
+  <h3>Your cats:</h3>
+  <ul>
+    <% current_user.cats.each do |cat| %>
+      <%= render cat %>
+      <h4>Rental requests for <%= cat.name %></h4>
+      <%= render "cats/rental_requests", cat: cat %>
+    <% end %>
+  </ul>
+  <br>
+<% end %>
